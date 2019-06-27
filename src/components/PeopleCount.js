@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import peopleContext from '../context/peopleContext';
 
 const PeopleCount = props => {
+    const context = useContext(peopleContext);
     return (
     <h2 className="text-center mt-4">
-        {props.peopleCount}
+        {context.people.length}
     </h2>
     );
 }

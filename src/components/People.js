@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import peopleContext from '../context/peopleContext';
 
-const People = props => {
+const People = () => {
+    const context = useContext(peopleContext);
     return (
         <div className="col">
             <h2>People</h2> <hr />
             {
-            props.people.map(p => (
+            context.people.map(p => (
                 <div key={Math.random() * 10000}>
                 <p>{p.firstName} {p.lastName}</p>
                 </div>

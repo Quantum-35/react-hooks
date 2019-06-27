@@ -11,7 +11,7 @@ const addPerson = (person, state) => {
 export default (state, action) => {
     switch(action.type) {
         case ADD_PERSON:
-            return ADD_PERSON(action.payload, state)
+            return addPerson(action.payload, state)
         default:
                 return state;
     }
