@@ -1,9 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useMemo, useRef } from 'react';
 import peopleContext from '../context/peopleContext';
 
 const Form = () => {
     const [person, setPerson] = useState({firstName: '', lastName: ''});
     const context = useContext(peopleContext);
+    const firstnameInput = useRef(null);
 
     const handleOnchange = (event) => {
         setPerson({...person, [event.target.name]: event.target.value});
@@ -18,6 +19,9 @@ const Form = () => {
         context.addPerson(newPerson);
         setPerson({firstName: '', lastName: ''});
     }
+
+    const printNumberOfPeople = () => console.log('Numbero of people', context.people.length);
+    useMemo(() => printNumberOfPeople(), [context.people]);
     return (
         <div className="col">
         <h2>Add a person</h2> <hr />
@@ -29,6 +33,7 @@ const Form = () => {
                 name="firstName"
                 placeholder="First Name"
                 value={person.firstName}
+                ref={firstnameInput}
                 onChange={handleOnchange}
               />
             </div>
